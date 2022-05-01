@@ -50,19 +50,16 @@
 		<script src="./pspdfkit.js"></script>
 
 		<script type="module">
-			import { dragAndDrop } from './lib/drag-and-drop.js';
-			import { makeToolbarItems } from './lib/toolbar.js';
+			import {dragAndDrop} from './lib/drag-and-drop.js';
+			import {makeToolbarItems} from './lib/toolbar.js';
 
 			document.body.classList.add(
-				`platform-${window.electron.processPlatform()}`,
+				`platform-${window.electron.processPlatform()}`
 			);
 			let instance = null;
 
-			const {
-				documentExport,
-				documentImport,
-				askUserToDiscardChanges,
-			} = window.electron;
+			const {documentExport, documentImport, askUserToDiscardChanges} =
+				window.electron;
 
 			let hasUnsavedAnnotations = false;
 
@@ -91,18 +88,16 @@
 					function exportFile() {
 						documentExport(
 							instance,
-							() => (hasUnsavedAnnotations = false),
+							() => (hasUnsavedAnnotations = false)
 						);
 					},
 					function importFile() {
 						if (hasUnsavedAnnotations) {
-							askUserToDiscardChanges(() =>
-								documentImport(load),
-							);
+							askUserToDiscardChanges(() => documentImport(load));
 						} else {
 							documentImport(load);
 						}
-					},
+					}
 				);
 
 				// Set up the configuration object. A custom style sheet is used to customize
@@ -122,7 +117,7 @@
 				instance.setToolbarItems(toolbarItems);
 				instance.addEventListener(
 					'annotations.change',
-					createOnAnnotationsChange(),
+					createOnAnnotationsChange()
 				);
 
 				dragAndDrop(instance, (file) => {
@@ -135,7 +130,8 @@
 			}
 
 			// Open a default document when the app is started.
-			window.onload = () => load('./assets/28627601-all-coding-challenges.pdf');
+			window.onload = () =>
+				load('./assets/28627601-all-coding-challenges.pdf');
 		</script>
 	</body>
 </html>
