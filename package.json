@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/cesaranzola/pspdfkit-electron-pspdfkit-viewer/issues"
   },
-  "homepage": "https://github.com/cesaranzola/pspdfkit-electron-pspdfkit-viewer#readme"
+  "homepage": "https://github.com/cesaranzola/pspdfkit-electron-pspdfkit-viewer#readme",
+  "devDependencies": {
+    "electron": "^18.2.0",
+    "electron-packager": "^15.5.1"
+  }
 }
